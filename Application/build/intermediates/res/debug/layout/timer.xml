@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?><LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="50dp"
+    android:gravity="center"
+    android:id="@+id/hoge">
+
+    <TextView
+        android:layout_width="241dp"
+        android:layout_height="44dp"
+        android:text="１日のお薬服用回数を教えてください"
+        android:id="@+id/textView"
+        android:layout_weight="39.28" />
+
+    <Button
+        android:layout_width="141dp"
+        android:layout_height="0dp"
+        android:text="１回"
+        android:id="@+id/num_one"
+        android:layout_weight="6096.10"
+        android:layout_gravity="center_horizontal" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:weightSum="1"
+        android:baselineAligned="false"
+        android:layout_weight="1">
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="145dp"
+        android:layout_height="0dp"
+        android:text="２回"
+        android:id="@+id/num_two"
+        android:layout_weight="1275.72"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="144dp"
+        android:layout_height="0dp"
+        android:text="３回"
+        android:id="@+id/num_three"
+        android:layout_weight="388.63"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout><!-- From: file:/home/micoratocaster/AndroidStudioProjects/BluetoothChat/Application/src/main/res/layout/timer.xml -->
