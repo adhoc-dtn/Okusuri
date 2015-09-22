@@ -16,17 +16,18 @@
 -->
 
 <resources>
-    <string name="app_name">BluetoothChat</string>
+    <string name="app_name">お薬タイマー</string>
     <string name="intro_message">
         <![CDATA[
-        
-            
-            『お薬タイマー』　つかいかた
-              (1) 薬袋のスイッチをONにします
-              (2) スマートホンに「Bluetooth接続確認」通知が着ますので「許可」してください
-              (3) 一日のお薬服用時間を入力してください
 
-        
+            『お薬タイマー』　つかいかた\n
+              (1) お薬の服用時間と，回数を入力してください\n
         ]]>
     </string>
+    <string name="intro_message2">
+        <![CDATA[
+              (2) 「薬袋」のスイッチをONにしてください\n
+        ]]>
+    </string>
+
 </resources>

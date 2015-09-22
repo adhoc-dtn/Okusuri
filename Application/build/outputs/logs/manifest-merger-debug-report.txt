@@ -53,25 +53,27 @@ category#android.intent.category.LAUNCHER
 ADDED from AndroidManifest.xml:42:17
 	android:name
 		ADDED from AndroidManifest.xml:42:27
-activity#com.example.android.bluetoothchat.DeviceListActivity
-ADDED from AndroidManifest.xml:46:9
+activity#com.example.android.bluetoothchat.startActivity
+ADDED from AndroidManifest.xml:45:9
 	android:label
-		ADDED from AndroidManifest.xml:49:13
-	android:configChanges
 		ADDED from AndroidManifest.xml:48:13
-	android:theme
-		ADDED from AndroidManifest.xml:50:13
-	android:name
+	android:configChanges
 		ADDED from AndroidManifest.xml:47:13
-activity#com.example.android.bluetoothchat.count_setup
+	android:theme
+		ADDED from AndroidManifest.xml:49:13
+	android:name
+		ADDED from AndroidManifest.xml:46:13
+activity#com.example.android.bluetoothchat.DeviceListActivity
 ADDED from AndroidManifest.xml:52:9
-	android:screenOrientation
-		ADDED from AndroidManifest.xml:55:13
 	android:label
+		ADDED from AndroidManifest.xml:55:13
+	android:configChanges
 		ADDED from AndroidManifest.xml:54:13
+	android:theme
+		ADDED from AndroidManifest.xml:56:13
 	android:name
 		ADDED from AndroidManifest.xml:53:13
-activity#com.example.android.bluetoothchat.timer_setup
+activity#com.example.android.bluetoothchat.count_setup
 ADDED from AndroidManifest.xml:58:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:61:13
@@ -79,10 +81,22 @@ ADDED from AndroidManifest.xml:58:9
 		ADDED from AndroidManifest.xml:60:13
 	android:name
 		ADDED from AndroidManifest.xml:59:13
-receiver#com.example.android.bluetoothchat.AlarmBroadcastReceiver
+activity#com.example.android.bluetoothchat.timer_setup
 ADDED from AndroidManifest.xml:64:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:67:13
+	android:label
+		ADDED from AndroidManifest.xml:66:13
 	android:name
-		ADDED from AndroidManifest.xml:64:19
+		ADDED from AndroidManifest.xml:65:13
+service#com.example.android.bluetoothchat.strartService
+ADDED from AndroidManifest.xml:69:9
+	android:name
+		ADDED from AndroidManifest.xml:69:18
+receiver#com.example.android.bluetoothchat.AlarmBroadcastReceiver
+ADDED from AndroidManifest.xml:70:9
+	android:name
+		ADDED from AndroidManifest.xml:70:19
 uses-sdk
 INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
 MERGED from com.android.support:support-v4:21.0.2:15:5

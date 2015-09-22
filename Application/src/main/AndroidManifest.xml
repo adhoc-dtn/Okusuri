@@ -42,6 +42,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name=".startActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/start_activity"
+            android:theme="@android:style/Theme.Holo.Dialog">
+        </activity>
 
         <activity
             android:name=".DeviceListActivity"
@@ -60,7 +66,7 @@
             android:label="@string/setup_timer"
             android:screenOrientation="portrait" >
         </activity>
-
+        <service android:name=".strartService"/>
         <receiver android:name=".AlarmBroadcastReceiver"></receiver>
     </application>
 

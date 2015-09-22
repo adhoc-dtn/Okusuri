@@ -18,7 +18,36 @@
       android:orientation="vertical"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:id="@+id/sample_main_layout">
+      android:id="@+id/sample_main_layout"
+     android:screenOrientation="portrait">
+
+    <TextView
+          style="@style/Widget.SampleMessage"
+          android:layout_width="wrap_content"
+          android:layout_height="115dp"
+          android:paddingLeft="@dimen/horizontal_page_margin"
+          android:paddingRight="@dimen/horizontal_page_margin"
+          android:paddingTop="@dimen/vertical_page_margin"
+          android:paddingBottom="@dimen/vertical_page_margin"
+          android:text="@string/intro_message"/>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="76dp"
+        android:text="服用時間と回数の入力"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        style="@style/Widget.SampleMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="115dp"
+        android:paddingLeft="@dimen/horizontal_page_margin"
+        android:paddingRight="@dimen/horizontal_page_margin"
+        android:paddingTop="@dimen/vertical_page_margin"
+        android:paddingBottom="@dimen/vertical_page_margin"
+        android:text="@string/intro_message2"/>
 
     <ViewAnimator
           android:id="@+id/sample_output"
@@ -31,15 +60,6 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-            <TextView
-                  style="@style/Widget.SampleMessage"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:paddingLeft="@dimen/horizontal_page_margin"
-                  android:paddingRight="@dimen/horizontal_page_margin"
-                  android:paddingTop="@dimen/vertical_page_margin"
-                  android:paddingBottom="@dimen/vertical_page_margin"
-                  android:text="@string/intro_message" />
         </ScrollView>
 
         <fragment
@@ -57,9 +77,8 @@
 
     <FrameLayout
           android:id="@+id/sample_content_fragment"
-          android:layout_weight="2"
-          android:layout_width="match_parent"
-          android:layout_height="0px" />
+        android:layout_width="match_parent"
+          android:layout_height="wrap_content" />
 
 </LinearLayout>
 

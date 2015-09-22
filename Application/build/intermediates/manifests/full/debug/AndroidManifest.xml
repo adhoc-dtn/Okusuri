@@ -45,6 +45,12 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.example.android.bluetoothchat.startActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/start_activity"
+            android:theme="@android:style/Theme.Holo.Dialog" >
+        </activity>
+        <activity
             android:name="com.example.android.bluetoothchat.DeviceListActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/select_device"
@@ -60,6 +66,8 @@
             android:label="@string/setup_timer"
             android:screenOrientation="portrait" >
         </activity>
+
+        <service android:name="com.example.android.bluetoothchat.strartService" />
 
         <receiver android:name="com.example.android.bluetoothchat.AlarmBroadcastReceiver" />
     </application>

@@ -89,29 +89,38 @@ public class timer_setup extends Activity{
                     startTime.set(Calendar.HOUR_OF_DAY, hour);
                     startTime.set(Calendar.MINUTE, minute);
                     startTime.set(Calendar.SECOND, 0);
+                    // 過去だったら明日にする
+                    if(startTime.getTimeInMillis() < System.currentTimeMillis()){
+                        startTime.add(Calendar.DAY_OF_YEAR, 1);
+                    }
                     long alarmStartTime = startTime.getTimeInMillis();
 
-                    globals.alarm.set(
+                    //アラームセットじゃオラ！！
+                    globals.alarmAdd(
                             AlarmManager.RTC_WAKEUP,
-                            alarmStartTime,
-                            globals.alarmIntent
+                            alarmStartTime
                     );
-
-                    globals.notificationId++;
-                   //入力回数のカウント
+                    //Toast.makeText(timer_setup.this, "セットした時刻の取得 : " + alarmStartTime, Toast.LENGTH_LONG).show();
 
                     // TextViewに紐付け
                     text = (TextView)findViewById(R.id.num_setting);
-                    print_count = num_set_count + 1;
+                    Toast.makeText(timer_setup.this, print_count + "回目の服用時刻を設定しました", Toast.LENGTH_LONG).show();
                     num_set_count++;
-                    Toast.makeText(timer_setup.this, print_count + "回目の服用時刻を設定しました", Toast.LENGTH_SHORT).show();
-                    text.setText(print_count + "回目の服用時間を教えて下さい");
+                    print_count = num_set_count + 1;
+
+
+
                     if (num_set_count >= num_take_med) {
                         Toast.makeText(timer_setup.this, "すべての設定が完了しました！", Toast.LENGTH_LONG).show();
                         finish();
+                    } else {
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        text.setText(print_count + "回目の服用時間を教えて下さい");
                     }
-                    //アラームのキャンセル
-                    //alarm.cancel(alarmIntent);
                     break;
 
             }

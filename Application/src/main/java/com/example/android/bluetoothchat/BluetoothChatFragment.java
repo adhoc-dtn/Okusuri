@@ -30,11 +30,13 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.view.KeyEvent;
+
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
@@ -45,17 +47,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.common.logger.Log;
-import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TimePicker;
-import android.widget.Toast;
+
 /**
  * This fragment controls Bluetooth to communicate with other devices.
  */
@@ -135,6 +127,7 @@ public class BluetoothChatFragment extends Fragment {
             startActivityForResult(enableIntent, REQUEST_ENABLE_BT);
             // Otherwise, setup the chat session
         } else if (mChatService == null) {
+            //デバッグ用ログ吐き出し
             setupChat();
         }
     }
@@ -163,12 +156,13 @@ public class BluetoothChatFragment extends Fragment {
         }
     }
 
+    //テスト用に受信メッセージを出す場合は，アンコメント
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_bluetooth_chat, container, false);
-    }
 
+    }
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         mConversationView = (ListView) view.findViewById(R.id.in);
@@ -188,9 +182,10 @@ public class BluetoothChatFragment extends Fragment {
         mConversationView.setAdapter(mConversationArrayAdapter);
 
         // Initialize the compose field with a listener for the return key
+        //デバッグ用ログ吐き出し
         mOutEditText.setOnEditorActionListener(mWriteListener);
 
-        // Initialize the send button with a listener that for click events
+       //  Initialize the send button with a listener that for click events
         mSendButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Send a message using content of the edit text widget
@@ -242,7 +237,8 @@ public class BluetoothChatFragment extends Fragment {
 
             // Reset out string buffer to zero and clear the edit text field
             mOutStringBuffer.setLength(0);
-            mOutEditText.setText(mOutStringBuffer);
+            //デバッグ用ログ吐き出し
+            //mOutEditText.setText(mOutStringBuffer);
         }
     }
 
@@ -302,6 +298,10 @@ public class BluetoothChatFragment extends Fragment {
         @Override
         public void handleMessage(Message msg) {
             FragmentActivity activity = getActivity();
+
+            //グローバル変数を取得
+            globals = (Globals) getActivity().getApplication();
+
             switch (msg.what) {
                 case Constants.MESSAGE_STATE_CHANGE:
                     switch (msg.arg1) {
@@ -328,8 +328,16 @@ public class BluetoothChatFragment extends Fragment {
                     byte[] readBuf = (byte[]) msg.obj;
                     // construct a string from the valid bytes in the buffer
                     String readMessage = new String(readBuf, 0, msg.arg1);
-                    mConversationArrayAdapter.add(mConnectedDeviceName + ":  " + readMessage);
-                    notification();
+                    //デバッグ用ログの吐き出し（受信メッセージの表示)
+                    //mConversationArrayAdapter.add(mConnectedDeviceName + ":  " + readMessage);
+                    //開閉を検知した後，アラームキャンセル動作に入る
+                    if (globals.alarmCancel() == true) {
+                        notification();
+
+                    }else {
+                        //いつもと時間の乖離が見られる場合
+                        notificationIllegal();
+                    }
                     break;
                 case Constants.MESSAGE_DEVICE_NAME:
                     // save the connected device's name
@@ -356,10 +364,28 @@ public class BluetoothChatFragment extends Fragment {
         builder.setContentTitle("お薬をとりました"); // 1行目
         //builder.setContentText("Text"); // 2行目
         //builder.setSubText("SubText"); // 3行目
-        builder.setContentInfo("通知"); // 右端
+        builder.setContentInfo("お薬info"); // 右端
         builder.setWhen(1); // タイムスタンプ（現在時刻、メール受信時刻、カウントダウンなどに使用）
 
-        builder.setTicker("お薬袋の開閉を検知"); // 通知到着時に通知バーに表示(4.4まで)
+        builder.setTicker("お薬をとりました"); // 通知到着時に通知バーに表示(4.4まで)
+        // 5.0からは表示されない
+
+        NotificationManagerCompat manager = NotificationManagerCompat.from(getActivity().getApplicationContext());
+        manager.notify(NOTIFICATION_TEXT_ID, builder.build());
+
+
+    }
+    public void notificationIllegal() {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity().getApplicationContext());
+        builder.setSmallIcon(R.drawable.take_med);
+
+        builder.setContentTitle("いつもと違うようです"); // 1行目
+        //builder.setContentText("Text"); // 2行目
+        //builder.setSubText("SubText"); // 3行目
+        builder.setContentInfo("お薬info"); // 右端
+        builder.setWhen(1); // タイムスタンプ（現在時刻、メール受信時刻、カウントダウンなどに使用）
+
+        builder.setTicker("いつもと違うようです"); // 通知到着時に通知バーに表示(4.4まで)
         // 5.0からは表示されない
 
         NotificationManagerCompat manager = NotificationManagerCompat.from(getActivity().getApplicationContext());
@@ -385,6 +411,7 @@ public class BluetoothChatFragment extends Fragment {
                 // When the request to enable Bluetooth returns
                 if (resultCode == Activity.RESULT_OK) {
                     // Bluetooth is now enabled, so set up a chat session
+                    //デバッグ用ログ吐き出し
                     setupChat();
                 } else {
                     // User did not enable Bluetooth or an error occurred
@@ -422,9 +449,6 @@ public class BluetoothChatFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.setup_timer: {
                 // タイマーのセットアップを行う
-                //Intent serverIntent = new Intent(getActivity(), DeviceListActivity.class);
-                // チャットルームの選択
-
                 Intent intent;
                 intent = new Intent(getActivity(), count_setup.class);
                 startActivity(intent);
