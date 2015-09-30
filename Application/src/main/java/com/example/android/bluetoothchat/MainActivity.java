@@ -19,10 +19,15 @@ package com.example.android.bluetoothchat;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.android.common.logger.Log;
 
@@ -45,8 +50,12 @@ public class MainActivity extends FragmentActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //buttonを取得
+        Button btn1 = (Button)findViewById(R.id.button_setting);
 
-       if (savedInstanceState == null) {
+        btn1.setOnClickListener(setting);
+
+        if (savedInstanceState == null) {
             Log.d(TAG, "savedInstanceState is null");
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             BluetoothChatFragment fragment = new BluetoothChatFragment();
@@ -55,11 +64,28 @@ public class MainActivity extends FragmentActivity {
        }
 
         try {
+            Toast.makeText(MainActivity.this, "サービススタート",
+                    Toast.LENGTH_SHORT).show();
             startService(new Intent(MainActivity.this, startService.class));
         } catch (Exception e) {
+            Toast.makeText(MainActivity.this, "サービス起動しない．．．",
+                    Toast.LENGTH_SHORT).show();
             Log.e(TAG, "Could not starts startService", e);
         }
+
+//        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+//        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
     }
 
+    View.OnClickListener setting= new View.OnClickListener() {
 
+        @Override
+        public void onClick(View v) {
+//            Toast.makeText(MainActivity.this, "ボタンがおされました",
+//                    Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, count_setup.class);
+            startActivity(intent);
+        }
+    };
 }

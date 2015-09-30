@@ -36,8 +36,10 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.example.android.bluetoothchat.MainActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+
+            <!-- android:configChanges="orientation|keyboardHidden" -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -64,6 +66,16 @@
         <activity
             android:name="com.example.android.bluetoothchat.timer_setup"
             android:label="@string/setup_timer"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.example.android.bluetoothchat.change_timer"
+            android:label="@string/change_timer"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.example.android.bluetoothchat.resetTimer"
+            android:label="@string/resetTimer"
             android:screenOrientation="portrait" >
         </activity>
 

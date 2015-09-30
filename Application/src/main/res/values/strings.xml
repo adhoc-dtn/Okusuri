@@ -35,10 +35,14 @@
     <string name="setup_count">お薬の服用回数を設定する</string>
 
     <!-- Options Menu -->
-    <string name="setup_timer">お薬タイマーを設定する</string>
+    <string name="setup_timer">タイマーのセットアップ</string>
     <string name="secure_connect">袋につなぐ</string>
     <string name="insecure_connect">袋につなぐ(insecure)</string>
     <string name="discoverable">他の端末から探せるようにする</string>
-    <string name="start_activity" />
+    <string name="change_timer">お薬タイマーの変更</string>
+    <string name="start_activity">アクティビティの開始</string>
+    <string name="resetTimer">お薬タイマーの時刻変更</string>
+
+
 
 </resources>

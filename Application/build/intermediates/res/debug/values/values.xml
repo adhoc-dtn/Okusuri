@@ -36,6 +36,7 @@
     <eat-comment/>
     <string name="bt_not_enabled_leaving">Bluetooth was not enabled. Leaving Bluetooth Chat.</string>
     <string name="button_scan">Scan for devices</string>
+    <string name="change_timer">お薬タイマーの変更</string>
     <string name="discoverable">他の端末から探せるようにする</string>
     <string name="insecure_connect">袋につなぐ(insecure)</string>
     <!-- From: file:/home/micoratocaster/AndroidStudioProjects/BluetoothChat/Application/src/main/res/values/base-strings.xml -->
@@ -57,6 +58,7 @@
     <string name="none_found">デバイスが見つかりません．</string>
     <string name="none_paired">接続しているデバイスがありません．</string>
     <string name="not_connected">You are not connected to a device</string>
+    <string name="resetTimer">お薬タイマーの時刻変更</string>
     <!-- From: file:/home/micoratocaster/AndroidStudioProjects/BluetoothChat/Application/src/main/res/values/fragmentview_strings.xml -->
     <eat-comment/>
     <string name="sample_hide_log">Hide Log</string>
@@ -68,8 +70,8 @@
     <string name="select_device">接続するデバイスを選んでください．</string>
     <string name="send">送る（テスト用）</string>
     <string name="setup_count">お薬の服用回数を設定する</string>
-    <string name="setup_timer">お薬タイマーを設定する</string>
-    <string name="start_activity"/>
+    <string name="setup_timer">タイマーのセットアップ</string>
+    <string name="start_activity">アクティビティの開始</string>
     <string name="title_connected_to">接続しました． <ns1:g id="device_name">%1$s</ns1:g></string>
     <string name="title_connecting">接続中...</string>
     <string name="title_not_connected">未接続です．</string>
